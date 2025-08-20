@@ -2,7 +2,7 @@
 
 namespace SaldoCloud\Plaid\Tests;
 
-use Capsule\Response;
+use Nimbly\Capsule\Response;
 use SaldoCloud\Plaid\PlaidRequestException;
 
 /**

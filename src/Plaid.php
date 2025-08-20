@@ -4,7 +4,7 @@ namespace SaldoCloud\Plaid;
 
 use Psr\Http\Client\ClientInterface;
 use ReflectionClass;
-use Shuttle\Shuttle;
+use Nimbly\Shuttle\Shuttle;
 use SaldoCloud\Plaid\Resources\AbstractResource;
 use UnexpectedValueException;
 

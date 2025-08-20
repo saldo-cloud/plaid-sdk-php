@@ -2,7 +2,7 @@
 
 namespace SaldoCloud\Plaid\Resources;
 
-use Capsule\Request;
+use Nimbly\Capsule\Request;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -78,17 +78,16 @@ abstract class AbstractResource
 	 * @param string $method
 	 * @param string $path
 	 * @param array<array-key,mixed> $params
-	 * @throws PlaidRequestException
-	 * @throws UnexpectedValueException
 	 * @return object
+	 * @throws PlaidRequestException
 	 */
 	protected function sendRequest(string $method, string $path, array $params = []): object
 	{
 		$response = $this->sendRequestRawResponse($method, $path, $params);
 
-		$payload = \json_decode($response->getBody()->getContents());
+		$payload = json_decode($response->getBody()->getContents());
 
-		if( \json_last_error() !== JSON_ERROR_NONE ){
+		if( json_last_error() !== JSON_ERROR_NONE ){
 			throw new UnexpectedValueException("Invalid JSON response returned by Plaid");
 		}
 

@@ -2,19 +2,19 @@
 
 namespace SaldoCloud\Plaid\Tests;
 
-use Capsule\Request;
-use Capsule\Response;
+use Nimbly\Capsule\Request;
+use Nimbly\Capsule\Response;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
-use Shuttle\Handler\MockHandler;
-use Shuttle\Shuttle;
+use Nimbly\Shuttle\Handler\MockHandler;
+use Nimbly\Shuttle\Shuttle;
 use SaldoCloud\Plaid\Plaid;
 
 abstract class TestCase extends PHPUnitTestCase
 {
 	protected function getPlaidClient(string $environment = "production"): Plaid
 	{
-		$httpClient = new Shuttle([
-			'handler' => new MockHandler([
+		$httpClient = new Shuttle(
+			new MockHandler([
 				function(Request $request) {
 
 					$requestParams = [
@@ -31,7 +31,7 @@ abstract class TestCase extends PHPUnitTestCase
 
 				}
 			])
-		]);
+		);
 
 		$plaid = new Plaid("client_id", "secret", $environment);
 		$plaid->setHttpClient($httpClient);

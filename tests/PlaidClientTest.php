@@ -3,7 +3,7 @@
 namespace SaldoCloud\Plaid\Tests;
 
 use ReflectionClass;
-use Shuttle\Shuttle;
+use Nimbly\Shuttle\Shuttle;
 use SaldoCloud\Plaid\Plaid;
 use UnexpectedValueException;
 
